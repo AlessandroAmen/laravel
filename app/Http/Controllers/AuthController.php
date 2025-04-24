@@ -14,14 +14,14 @@ class AuthController extends Controller
         $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|email|unique:users,email',
-            'password' => 'required|string|min:6|confirmed', // password e password_confirmation
+            'password' => 'required|string|min:6|confirmed', 
         ]);
 
         // Creazione dell'utente
         User::create([
             'name' => $request->name,
             'email' => $request->email,
-            'password' => Hash::make($request->password), // Hash della password
+            'password' => Hash::make($request->password),
         ]);
 
         return redirect('/')->with('success', 'Registrazione completata con successo!');
