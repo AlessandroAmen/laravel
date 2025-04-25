@@ -16,7 +16,13 @@ Route::put('/profile/{id}', [ProfileController::class, 'modify'])->name('profile
 Route::delete('/profile/{id}', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
 // Registrazione
-Route::post('/register', [AuthController::class, 'register'])->name('register');
 Route::get('/register', function () {
-    return view('register'); // Assicurati che il file resources/views/register.blade.php esista
+    return view('register');
 })->name('register.form');
+Route::post('/register', [AuthController::class, 'register'])->name('register');
+
+//form di login
+Route::get('/login', function () {
+    return view('login');
+})->name('login.form');
+Route::post('/login', [AuthController::class, 'login'])->name('login');
