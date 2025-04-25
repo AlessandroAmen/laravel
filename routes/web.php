@@ -16,7 +16,6 @@ Route::post('/', [PostController::class, 'store'])->name('posts.store');
 // Profilo Utente
 Route::get('/profile/{id}', [ProfileController::class, 'index'])->name('profile');
 
-
 // Registrazione
 Route::get('/register', function () {
     return view('register');
