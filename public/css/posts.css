@@ -1,0 +1,26 @@
+.cardpost {
+    background-color: #f9f9f9; 
+    border: 1px solid #ddd; 
+    border-radius: 8px; 
+    margin-bottom: 20px;
+    padding: 20px; 
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1); 
+}
+
+.cardcontenuto h3 {
+    color: #333; 
+    margin-top: 0;
+    margin-bottom: 10px; 
+}
+
+.cardcontenuto p {
+    color: #555; 
+    line-height: 1.6; 
+}
+
+.cardpost small {
+    color: #777; 
+    display: block; 
+    margin-top: 15px; 
+    font-size: 0.9em; 
+}

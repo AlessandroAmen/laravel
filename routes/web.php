@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Session\Session as SessionSession;
 
 // Homepage
 Route::get('/', [PostController::class, 'index'])->name('homepage');
-Route::post('/', [PostController::class, 'store'])->name('post.store');
+Route::post('/', [PostController::class, 'store'])->name('posts.store');
 
 // Profilo Utente
 Route::get('/profile/{id}', [ProfileController::class, 'index'])->name('profile');
