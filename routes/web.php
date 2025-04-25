@@ -9,10 +9,13 @@ use Illuminate\Support\Facades\Session as FacadesSession;
 use Symfony\Component\HttpFoundation\Session\Session as SessionSession;
 
 
+
 // Homepage
 Route::get('/', [PostController::class, 'index'])->name('homepage');
-Route::post('/', [PostController::class, 'store'])->name('posts.store');
-
+Route::post('/posts', [PostController::class, 'store'])
+    ->middleware('checkLoggedIn')
+    ->name('posts.store');
+    
 // Profilo Utente
 Route::get('/profile/{id}', [ProfileController::class, 'index'])->name('profile');
 Route::post('/profile/{id}', [ProfileController::class, 'update'])->name('profile.update');
