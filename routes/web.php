@@ -3,16 +3,11 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfileController;
-use Illuminate\Contracts\Session\Session;
 use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\Session as FacadesSession;
-use Symfony\Component\HttpFoundation\Session\Session as SessionSession;
-
-
 
 // Homepage
 Route::get('/', [PostController::class, 'index'])->name('homepage');
-Route::post('/', [PostController::class, 'store'])->name('posts.store');
+Route::post('/', [PostController::class, 'store'])->middleware('auth')->name('posts.store');
 
 // Profilo Utente
 Route::get('/profile/{id}', [ProfileController::class, 'index'])
@@ -25,14 +20,11 @@ Route::get('/register', function () {
 })->name('register.form');
 Route::post('/register', [AuthController::class, 'register'])->name('register');
 
-//form di login
+// Login
 Route::get('/login', function () {
     return view('login');
 })->name('login.form');
 Route::post('/login', [AuthController::class, 'login'])->name('login');
 
-//logout 
-Route::post('/logout', function () {
-    FacadesSession::forget('user');
-    return redirect('/login')->with('success', 'Logout effettuato!');
-})->name('logout');
+// Logout
+Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth')->name('logout');

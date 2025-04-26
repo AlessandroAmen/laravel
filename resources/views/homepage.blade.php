@@ -5,7 +5,7 @@
 @section('content')
     <h1>Homepage</h1>
 
-    @if(Session::has('user'))
+    @auth
         <form action="{{ route('posts.store') }}" method="POST">
             @csrf
             <div class="mb-3">
@@ -20,7 +20,7 @@
         </form>
     @else
         <p><a href="{{ route('login.form') }}">Accedi</a> per pubblicare un post.</p>
-    @endif
+    @endauth
 
     <h2>Lista dei Post</h2>
     <ul>

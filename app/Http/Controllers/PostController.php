@@ -4,9 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Routing\Controller as BaseController;
 
-class PostController extends Controller
+class PostController extends BaseController
 {
     // Mostra la homepage con i post
     public function index()
@@ -19,11 +20,6 @@ class PostController extends Controller
     // Salva un nuovo post
     public function store(Request $request)
     {
-        // Controlla che l'utente sia loggato
-        if (!Session::has('user')) {
-            return redirect('/login')->with('error', 'Devi essere loggato per pubblicare un post.');
-        }
-
         // Validazione dei dati
         $request->validate([
             'title' => 'required|string|max:255',
@@ -32,7 +28,7 @@ class PostController extends Controller
 
         // Creazione del post
         Post::create([
-            'user_id' => Session::get('user')->id,
+            'user_id' => Auth::id(),
             'title' => $request->title,
             'content' => $request->content,
         ]);
