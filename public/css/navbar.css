@@ -13,22 +13,49 @@
     margin: 0;
     display: flex;
     gap: 20px;
+    align-items: center;
+    width: 100%;
+}
+
+/* Container per i link di navigazione (sinistra) */
+.navbar ul .nav-links {
+    display: flex;
+    gap: 20px;
+}
+
+/* Container per il bottone di logout (destra) */
+.navbar ul .auth-links {
+    margin-left: auto;
 }
 
 .navbar ul li {
     display: inline;
 }
 
-.navbar ul li a, .btn-logout {
+.navbar ul li a {
     color: white;
     text-decoration: none;
     padding: 5px 10px;
-    background: none;
-    border: none;
-    cursor: pointer;
 }
 
-.navbar ul li a:hover, .btn-logout:hover {
+.navbar ul li a:hover {
     background-color: #555;
     border-radius: 5px;
+}
+
+/* Stile specifico per il bottone di logout */
+.btn-logout {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+    font-size: 0.85rem;
+}
+
+.btn-logout:hover {
+    background-color: #c82333;
 }
